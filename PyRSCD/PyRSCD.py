@@ -11,14 +11,14 @@ c = 3e10
 # Physical constants
 esq             = (4.8e-10)**2         # e² in statcoulombs²
 m_eff           = 1e-31                # Effective mass [g]
-d               = 5e-7                # Lattice spacing [cm]
+d               = 3e-7                # Lattice spacing [cm]
 
 # Lattice settings
 bravais_lattice = 'Square'            # Options: 'Square', 'Hexagonal'
 
 # Brillouin zone path
 N = 150                              # Number of steps in BZ
-path_string     = 'GM'              # High-symmetry path, e.g. 'XGMX', 'MGKM', 'Custom'
+path_string     = 'XGMX'              # High-symmetry path, e.g. 'XGMX', 'MGKM', 'Custom'
 
 #################################
 
@@ -71,6 +71,7 @@ if path_string != 'Custom':
 
     # Stack into one array
     k_path=np.vstack(k_path)
+    print(np.shape(k_path))
 
 if path_string == 'Custom':
     k_path = []
@@ -92,6 +93,8 @@ if path_string == 'Custom':
         k_path.append(segment)
 
     k_path = np.vstack(k_path)  # Combine segments into one continuous array
+    print(np.shape(k_path))
+
 
 
 # Eigenvalue storage
